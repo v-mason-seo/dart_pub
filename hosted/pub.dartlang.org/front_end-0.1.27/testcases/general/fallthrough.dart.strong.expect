@@ -1,0 +1,58 @@
+// Formatted problems:
+//
+// pkg/front_end/testcases/fallthrough.dart:8:5: Error: Switch case may fall through to the next case.
+//     case 3:
+//     ^
+//
+// pkg/front_end/testcases/fallthrough.dart:12:5: Error: Switch case may fall through to the next case.
+//     case 6:
+//     ^
+
+// Unhandled errors:
+//
+// pkg/front_end/testcases/fallthrough.dart:8:5: Error: Switch case may fall through to the next case.
+//     case 3:
+//     ^
+//
+// pkg/front_end/testcases/fallthrough.dart:12:5: Error: Switch case may fall through to the next case.
+//     case 6:
+//     ^
+
+library;
+import self as self;
+import "dart:core" as core;
+
+static method main(core::List<core::String> args) → void {
+  core::int x = args.{core::List::length};
+  #L1:
+  switch(x) {
+    #L2:
+    case 3:
+      {
+        x = 4;
+        throw new core::FallThroughError::_create("org-dartlang-testcase:///fallthrough.dart", 8);
+      }
+    #L3:
+    case 5:
+      {
+        break #L1;
+      }
+    #L4:
+    case 6:
+    case 7:
+      {
+        if(args.{core::List::[]}(0).{core::String::==}("")) {
+          break #L1;
+        }
+        else {
+          return;
+        }
+        throw new core::FallThroughError::_create("org-dartlang-testcase:///fallthrough.dart", 12);
+      }
+    #L5:
+    case 4:
+      {
+        break #L1;
+      }
+  }
+}

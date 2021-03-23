@@ -1,0 +1,26 @@
+{
+  "configVersion": 2,
+  "packages": [
+    {
+      "name": "meta",
+      "rootUri": "file:///usr/local/google/home/nbosch/.pub-cache/hosted/pub.dartlang.org/meta-1.2.2",
+      "packageUri": "lib/",
+      "languageVersion": "1.12"
+    },
+    {
+      "name": "pedantic",
+      "rootUri": "file:///usr/local/google/home/nbosch/.pub-cache/hosted/pub.dartlang.org/pedantic-1.9.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
+      "name": "js",
+      "rootUri": "../",
+      "packageUri": "lib/",
+      "languageVersion": "2.10"
+    }
+  ],
+  "generated": "2020-09-22T15:50:21.471565Z",
+  "generator": "pub",
+  "generatorVersion": "2.10.0-110.0.dev"
+}

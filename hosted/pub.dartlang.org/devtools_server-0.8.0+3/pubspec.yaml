@@ -1,0 +1,33 @@
+name: devtools_server
+description: A server that supports Dart DevTools.
+
+# Note: this version should only be updated by running tools/update_version.sh
+# that updates all versions of packages from packages/devtools.
+version: 0.8.0+3
+
+homepage: https://github.com/flutter/devtools
+
+environment:
+  sdk: '>=2.6.0 <3.0.0'
+
+dependencies:
+  args: ^1.5.1
+  browser_launcher: ^0.1.5
+  devtools_shared: 0.8.0+3
+  intl: ^0.16.0
+  meta: ^1.1.0
+  path: ^1.6.0
+  sse: ^3.1.2
+  shelf: ^0.7.4
+  shelf_proxy: ^0.1.0
+  shelf_static: ^0.2.8
+  http_multi_server: ^2.2.0
+  usage: ^3.4.1
+  vm_service: ^4.1.0
+
+dependency_overrides:
+
+# All overriden dependencies are published together so there is no harm
+# in treating them like they are part of a mono-repo while developing.
+
+

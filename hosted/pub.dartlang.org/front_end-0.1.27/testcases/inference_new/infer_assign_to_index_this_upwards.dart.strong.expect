@@ -1,0 +1,221 @@
+library test;
+//
+// Problems in library:
+//
+// pkg/front_end/testcases/inference_new/infer_assign_to_index_this_upwards.dart:111:28: Error: A value of type 'int' can't be assigned to a variable of type 'double'.
+//         /*@target=num::+*/ += getInt();
+//                            ^
+//
+// pkg/front_end/testcases/inference_new/infer_assign_to_index_this_upwards.dart:121:51: Error: A value of type 'int' can't be assigned to a variable of type 'double'.
+//     var /*@ type=int* */ v10 = /*@target=num::+*/ ++this
+//                                                   ^
+//
+// pkg/front_end/testcases/inference_new/infer_assign_to_index_this_upwards.dart:126:28: Error: A value of type 'int' can't be assigned to a variable of type 'double'.
+//         /*@target=num::+*/ ++;
+//                            ^
+//
+// pkg/front_end/testcases/inference_new/infer_assign_to_index_this_upwards.dart:268:31: Error: A value of type 'double' can't be assigned to a variable of type 'int'.
+//         /*@target=double::+*/ += getInt();
+//                               ^
+//
+// pkg/front_end/testcases/inference_new/infer_assign_to_index_this_upwards.dart:272:31: Error: A value of type 'double' can't be assigned to a variable of type 'int'.
+//         /*@target=double::+*/ += getNum();
+//                               ^
+//
+// pkg/front_end/testcases/inference_new/infer_assign_to_index_this_upwards.dart:274:57: Error: A value of type 'double' can't be assigned to a variable of type 'int'.
+//     var /*@ type=double* */ v10 = /*@target=double::+*/ ++this
+//                                                         ^
+//
+// pkg/front_end/testcases/inference_new/infer_assign_to_index_this_upwards.dart:279:31: Error: A value of type 'double' can't be assigned to a variable of type 'int'.
+//         /*@target=double::+*/ ++;
+//                               ^
+//
+import self as self;
+import "dart:core" as core;
+
+abstract class Test1 extends core::Object {
+  synthetic constructor •() → self::Test1*
+    : super core::Object::•()
+    ;
+  abstract operator [](core::String* s) → core::int*;
+  abstract operator []=(core::String* s, core::int* v) → void;
+  method test() → void {
+    core::int* v1 = let final self::Test1* #t1 = this in let final core::String* #t2 = "x" in let final core::int* #t3 = self::getInt() in let final void #t4 = #t1.{self::Test1::[]=}(#t2, #t3) in #t3;
+    core::num* v2 = let final self::Test1* #t5 = this in let final core::String* #t6 = "x" in let final core::num* #t7 = self::getNum() as{TypeError} core::int* in let final void #t8 = #t5.{self::Test1::[]=}(#t6, #t7) in #t7;
+    core::int* v4 = let final core::String* #t9 = "x" in let final core::int* #t10 = this.{self::Test1::[]}(#t9) in #t10.{core::num::==}(null) ?{core::int*} let final core::int* #t11 = self::getInt() in let final void #t12 = this.{self::Test1::[]=}(#t9, #t11) in #t11 : #t10;
+    core::num* v5 = let final core::String* #t13 = "x" in let final core::int* #t14 = this.{self::Test1::[]}(#t13) in #t14.{core::num::==}(null) ?{core::num*} let final core::num* #t15 = self::getNum() as{TypeError} core::int* in let final void #t16 = this.{self::Test1::[]=}(#t13, #t15) in #t15 : #t14;
+    core::int* v7 = let final core::String* #t17 = "x" in let final core::int* #t18 = this.{self::Test1::[]}(#t17).{core::num::+}(self::getInt()) in let final void #t19 = this.{self::Test1::[]=}(#t17, #t18) in #t18;
+    core::num* v8 = let final core::String* #t20 = "x" in let final core::num* #t21 = this.{self::Test1::[]}(#t20).{core::num::+}(self::getNum()) as{TypeError} core::int* in let final void #t22 = this.{self::Test1::[]=}(#t20, #t21) in #t21;
+    core::int* v10 = let final core::String* #t23 = "x" in let final core::int* #t24 = this.{self::Test1::[]}(#t23).{core::num::+}(1) in let final void #t25 = this.{self::Test1::[]=}(#t23, #t24) in #t24;
+    core::int* v11 = let final core::String* #t26 = "x" in let final core::int* #t27 = this.{self::Test1::[]}(#t26) in let final void #t28 = this.{self::Test1::[]=}(#t26, #t27.{core::num::+}(1)) in #t27;
+  }
+}
+abstract class Test2 extends core::Object {
+  synthetic constructor •() → self::Test2*
+    : super core::Object::•()
+    ;
+  abstract operator [](core::String* s) → core::int*;
+  abstract operator []=(core::String* s, core::num* v) → void;
+  method test() → void {
+    core::int* v1 = let final self::Test2* #t29 = this in let final core::String* #t30 = "x" in let final core::int* #t31 = self::getInt() in let final void #t32 = #t29.{self::Test2::[]=}(#t30, #t31) in #t31;
+    core::num* v2 = let final self::Test2* #t33 = this in let final core::String* #t34 = "x" in let final core::num* #t35 = self::getNum() in let final void #t36 = #t33.{self::Test2::[]=}(#t34, #t35) in #t35;
+    core::double* v3 = let final self::Test2* #t37 = this in let final core::String* #t38 = "x" in let final core::double* #t39 = self::getDouble() in let final void #t40 = #t37.{self::Test2::[]=}(#t38, #t39) in #t39;
+    core::int* v4 = let final core::String* #t41 = "x" in let final core::int* #t42 = this.{self::Test2::[]}(#t41) in #t42.{core::num::==}(null) ?{core::int*} let final core::int* #t43 = self::getInt() in let final void #t44 = this.{self::Test2::[]=}(#t41, #t43) in #t43 : #t42;
+    core::num* v5 = let final core::String* #t45 = "x" in let final core::int* #t46 = this.{self::Test2::[]}(#t45) in #t46.{core::num::==}(null) ?{core::num*} let final core::num* #t47 = self::getNum() in let final void #t48 = this.{self::Test2::[]=}(#t45, #t47) in #t47 : #t46;
+    core::num* v6 = let final core::String* #t49 = "x" in let final core::int* #t50 = this.{self::Test2::[]}(#t49) in #t50.{core::num::==}(null) ?{core::num*} let final core::double* #t51 = self::getDouble() in let final void #t52 = this.{self::Test2::[]=}(#t49, #t51) in #t51 : #t50;
+    core::int* v7 = let final core::String* #t53 = "x" in let final core::int* #t54 = this.{self::Test2::[]}(#t53).{core::num::+}(self::getInt()) in let final void #t55 = this.{self::Test2::[]=}(#t53, #t54) in #t54;
+    core::num* v8 = let final core::String* #t56 = "x" in let final core::num* #t57 = this.{self::Test2::[]}(#t56).{core::num::+}(self::getNum()) in let final void #t58 = this.{self::Test2::[]=}(#t56, #t57) in #t57;
+    core::double* v9 = let final core::String* #t59 = "x" in let final core::double* #t60 = this.{self::Test2::[]}(#t59).{core::num::+}(self::getDouble()) in let final void #t61 = this.{self::Test2::[]=}(#t59, #t60) in #t60;
+    core::int* v10 = let final core::String* #t62 = "x" in let final core::int* #t63 = this.{self::Test2::[]}(#t62).{core::num::+}(1) in let final void #t64 = this.{self::Test2::[]=}(#t62, #t63) in #t63;
+    core::int* v11 = let final core::String* #t65 = "x" in let final core::int* #t66 = this.{self::Test2::[]}(#t65) in let final void #t67 = this.{self::Test2::[]=}(#t65, #t66.{core::num::+}(1)) in #t66;
+  }
+}
+abstract class Test3 extends core::Object {
+  synthetic constructor •() → self::Test3*
+    : super core::Object::•()
+    ;
+  abstract operator [](core::String* s) → core::int*;
+  abstract operator []=(core::String* s, core::double* v) → void;
+  method test() → void {
+    core::num* v2 = let final self::Test3* #t68 = this in let final core::String* #t69 = "x" in let final core::num* #t70 = self::getNum() as{TypeError} core::double* in let final void #t71 = #t68.{self::Test3::[]=}(#t69, #t70) in #t70;
+    core::double* v3 = let final self::Test3* #t72 = this in let final core::String* #t73 = "x" in let final core::double* #t74 = self::getDouble() in let final void #t75 = #t72.{self::Test3::[]=}(#t73, #t74) in #t74;
+    core::num* v5 = let final core::String* #t76 = "x" in let final core::int* #t77 = this.{self::Test3::[]}(#t76) in #t77.{core::num::==}(null) ?{core::num*} let final core::num* #t78 = self::getNum() as{TypeError} core::double* in let final void #t79 = this.{self::Test3::[]=}(#t76, #t78) in #t78 : #t77;
+    core::num* v6 = let final core::String* #t80 = "x" in let final core::int* #t81 = this.{self::Test3::[]}(#t80) in #t81.{core::num::==}(null) ?{core::num*} let final core::double* #t82 = self::getDouble() in let final void #t83 = this.{self::Test3::[]=}(#t80, #t82) in #t82 : #t81;
+    core::int* v7 = let final core::String* #t84 = "x" in let final core::int* #t85 = let final<BottomType> #t86 = invalid-expression "pkg/front_end/testcases/inference_new/infer_assign_to_index_this_upwards.dart:111:28: Error: A value of type 'int' can't be assigned to a variable of type 'double'.
+        /*@target=num::+*/ += getInt();
+                           ^" in this.{self::Test3::[]}(#t84).{core::num::+}(self::getInt()) as{TypeError} core::double* in let final void #t87 = this.{self::Test3::[]=}(#t84, #t85) in #t85;
+    core::num* v8 = let final core::String* #t88 = "x" in let final core::num* #t89 = this.{self::Test3::[]}(#t88).{core::num::+}(self::getNum()) as{TypeError} core::double* in let final void #t90 = this.{self::Test3::[]=}(#t88, #t89) in #t89;
+    core::double* v9 = let final core::String* #t91 = "x" in let final core::double* #t92 = this.{self::Test3::[]}(#t91).{core::num::+}(self::getDouble()) in let final void #t93 = this.{self::Test3::[]=}(#t91, #t92) in #t92;
+    core::int* v10 = let final core::String* #t94 = "x" in let final core::int* #t95 = let final<BottomType> #t96 = invalid-expression "pkg/front_end/testcases/inference_new/infer_assign_to_index_this_upwards.dart:121:51: Error: A value of type 'int' can't be assigned to a variable of type 'double'.
+    var /*@ type=int* */ v10 = /*@target=num::+*/ ++this
+                                                  ^" in this.{self::Test3::[]}(#t94).{core::num::+}(1) as{TypeError} core::double* in let final void #t97 = this.{self::Test3::[]=}(#t94, #t95) in #t95;
+    core::int* v11 = let final core::String* #t98 = "x" in let final core::int* #t99 = this.{self::Test3::[]}(#t98) in let final void #t100 = this.{self::Test3::[]=}(#t98, let final<BottomType> #t101 = invalid-expression "pkg/front_end/testcases/inference_new/infer_assign_to_index_this_upwards.dart:126:28: Error: A value of type 'int' can't be assigned to a variable of type 'double'.
+        /*@target=num::+*/ ++;
+                           ^" in #t99.{core::num::+}(1) as{TypeError} core::double*) in #t99;
+  }
+}
+abstract class Test4 extends core::Object {
+  synthetic constructor •() → self::Test4*
+    : super core::Object::•()
+    ;
+  abstract operator [](core::String* s) → core::num*;
+  abstract operator []=(core::String* s, core::int* v) → void;
+  method test() → void {
+    core::int* v1 = let final self::Test4* #t102 = this in let final core::String* #t103 = "x" in let final core::int* #t104 = self::getInt() in let final void #t105 = #t102.{self::Test4::[]=}(#t103, #t104) in #t104;
+    core::num* v2 = let final self::Test4* #t106 = this in let final core::String* #t107 = "x" in let final core::num* #t108 = self::getNum() as{TypeError} core::int* in let final void #t109 = #t106.{self::Test4::[]=}(#t107, #t108) in #t108;
+    core::num* v4 = let final core::String* #t110 = "x" in let final core::num* #t111 = this.{self::Test4::[]}(#t110) in #t111.{core::num::==}(null) ?{core::num*} let final core::int* #t112 = self::getInt() in let final void #t113 = this.{self::Test4::[]=}(#t110, #t112) in #t112 : #t111;
+    core::num* v5 = let final core::String* #t114 = "x" in let final core::num* #t115 = this.{self::Test4::[]}(#t114) in #t115.{core::num::==}(null) ?{core::num*} let final core::num* #t116 = self::getNum() as{TypeError} core::int* in let final void #t117 = this.{self::Test4::[]=}(#t114, #t116) in #t116 : #t115;
+    core::num* v7 = let final core::String* #t118 = "x" in let final core::num* #t119 = this.{self::Test4::[]}(#t118).{core::num::+}(self::getInt()) as{TypeError} core::int* in let final void #t120 = this.{self::Test4::[]=}(#t118, #t119) in #t119;
+    core::num* v8 = let final core::String* #t121 = "x" in let final core::num* #t122 = this.{self::Test4::[]}(#t121).{core::num::+}(self::getNum()) as{TypeError} core::int* in let final void #t123 = this.{self::Test4::[]=}(#t121, #t122) in #t122;
+    core::num* v10 = let final core::String* #t124 = "x" in let final core::num* #t125 = this.{self::Test4::[]}(#t124).{core::num::+}(1) as{TypeError} core::int* in let final void #t126 = this.{self::Test4::[]=}(#t124, #t125) in #t125;
+    core::num* v11 = let final core::String* #t127 = "x" in let final core::num* #t128 = this.{self::Test4::[]}(#t127) in let final void #t129 = this.{self::Test4::[]=}(#t127, #t128.{core::num::+}(1) as{TypeError} core::int*) in #t128;
+  }
+}
+abstract class Test5 extends core::Object {
+  synthetic constructor •() → self::Test5*
+    : super core::Object::•()
+    ;
+  abstract operator [](core::String* s) → core::num*;
+  abstract operator []=(core::String* s, core::num* v) → void;
+  method test() → void {
+    core::int* v1 = let final self::Test5* #t130 = this in let final core::String* #t131 = "x" in let final core::int* #t132 = self::getInt() in let final void #t133 = #t130.{self::Test5::[]=}(#t131, #t132) in #t132;
+    core::num* v2 = let final self::Test5* #t134 = this in let final core::String* #t135 = "x" in let final core::num* #t136 = self::getNum() in let final void #t137 = #t134.{self::Test5::[]=}(#t135, #t136) in #t136;
+    core::double* v3 = let final self::Test5* #t138 = this in let final core::String* #t139 = "x" in let final core::double* #t140 = self::getDouble() in let final void #t141 = #t138.{self::Test5::[]=}(#t139, #t140) in #t140;
+    core::num* v4 = let final core::String* #t142 = "x" in let final core::num* #t143 = this.{self::Test5::[]}(#t142) in #t143.{core::num::==}(null) ?{core::num*} let final core::int* #t144 = self::getInt() in let final void #t145 = this.{self::Test5::[]=}(#t142, #t144) in #t144 : #t143;
+    core::num* v5 = let final core::String* #t146 = "x" in let final core::num* #t147 = this.{self::Test5::[]}(#t146) in #t147.{core::num::==}(null) ?{core::num*} let final core::num* #t148 = self::getNum() in let final void #t149 = this.{self::Test5::[]=}(#t146, #t148) in #t148 : #t147;
+    core::num* v6 = let final core::String* #t150 = "x" in let final core::num* #t151 = this.{self::Test5::[]}(#t150) in #t151.{core::num::==}(null) ?{core::num*} let final core::double* #t152 = self::getDouble() in let final void #t153 = this.{self::Test5::[]=}(#t150, #t152) in #t152 : #t151;
+    core::num* v7 = let final core::String* #t154 = "x" in let final core::num* #t155 = this.{self::Test5::[]}(#t154).{core::num::+}(self::getInt()) in let final void #t156 = this.{self::Test5::[]=}(#t154, #t155) in #t155;
+    core::num* v8 = let final core::String* #t157 = "x" in let final core::num* #t158 = this.{self::Test5::[]}(#t157).{core::num::+}(self::getNum()) in let final void #t159 = this.{self::Test5::[]=}(#t157, #t158) in #t158;
+    core::num* v9 = let final core::String* #t160 = "x" in let final core::num* #t161 = this.{self::Test5::[]}(#t160).{core::num::+}(self::getDouble()) in let final void #t162 = this.{self::Test5::[]=}(#t160, #t161) in #t161;
+    core::num* v10 = let final core::String* #t163 = "x" in let final core::num* #t164 = this.{self::Test5::[]}(#t163).{core::num::+}(1) in let final void #t165 = this.{self::Test5::[]=}(#t163, #t164) in #t164;
+    core::num* v11 = let final core::String* #t166 = "x" in let final core::num* #t167 = this.{self::Test5::[]}(#t166) in let final void #t168 = this.{self::Test5::[]=}(#t166, #t167.{core::num::+}(1)) in #t167;
+  }
+}
+abstract class Test6 extends core::Object {
+  synthetic constructor •() → self::Test6*
+    : super core::Object::•()
+    ;
+  abstract operator [](core::String* s) → core::num*;
+  abstract operator []=(core::String* s, core::double* v) → void;
+  method test() → void {
+    core::num* v2 = let final self::Test6* #t169 = this in let final core::String* #t170 = "x" in let final core::num* #t171 = self::getNum() as{TypeError} core::double* in let final void #t172 = #t169.{self::Test6::[]=}(#t170, #t171) in #t171;
+    core::double* v3 = let final self::Test6* #t173 = this in let final core::String* #t174 = "x" in let final core::double* #t175 = self::getDouble() in let final void #t176 = #t173.{self::Test6::[]=}(#t174, #t175) in #t175;
+    core::num* v5 = let final core::String* #t177 = "x" in let final core::num* #t178 = this.{self::Test6::[]}(#t177) in #t178.{core::num::==}(null) ?{core::num*} let final core::num* #t179 = self::getNum() as{TypeError} core::double* in let final void #t180 = this.{self::Test6::[]=}(#t177, #t179) in #t179 : #t178;
+    core::num* v6 = let final core::String* #t181 = "x" in let final core::num* #t182 = this.{self::Test6::[]}(#t181) in #t182.{core::num::==}(null) ?{core::num*} let final core::double* #t183 = self::getDouble() in let final void #t184 = this.{self::Test6::[]=}(#t181, #t183) in #t183 : #t182;
+    core::num* v7 = let final core::String* #t185 = "x" in let final core::num* #t186 = this.{self::Test6::[]}(#t185).{core::num::+}(self::getInt()) as{TypeError} core::double* in let final void #t187 = this.{self::Test6::[]=}(#t185, #t186) in #t186;
+    core::num* v8 = let final core::String* #t188 = "x" in let final core::num* #t189 = this.{self::Test6::[]}(#t188).{core::num::+}(self::getNum()) as{TypeError} core::double* in let final void #t190 = this.{self::Test6::[]=}(#t188, #t189) in #t189;
+    core::num* v9 = let final core::String* #t191 = "x" in let final core::num* #t192 = this.{self::Test6::[]}(#t191).{core::num::+}(self::getDouble()) as{TypeError} core::double* in let final void #t193 = this.{self::Test6::[]=}(#t191, #t192) in #t192;
+    core::num* v10 = let final core::String* #t194 = "x" in let final core::num* #t195 = this.{self::Test6::[]}(#t194).{core::num::+}(1) as{TypeError} core::double* in let final void #t196 = this.{self::Test6::[]=}(#t194, #t195) in #t195;
+    core::num* v11 = let final core::String* #t197 = "x" in let final core::num* #t198 = this.{self::Test6::[]}(#t197) in let final void #t199 = this.{self::Test6::[]=}(#t197, #t198.{core::num::+}(1) as{TypeError} core::double*) in #t198;
+  }
+}
+abstract class Test7 extends core::Object {
+  synthetic constructor •() → self::Test7*
+    : super core::Object::•()
+    ;
+  abstract operator [](core::String* s) → core::double*;
+  abstract operator []=(core::String* s, core::int* v) → void;
+  method test() → void {
+    core::int* v1 = let final self::Test7* #t200 = this in let final core::String* #t201 = "x" in let final core::int* #t202 = self::getInt() in let final void #t203 = #t200.{self::Test7::[]=}(#t201, #t202) in #t202;
+    core::num* v2 = let final self::Test7* #t204 = this in let final core::String* #t205 = "x" in let final core::num* #t206 = self::getNum() as{TypeError} core::int* in let final void #t207 = #t204.{self::Test7::[]=}(#t205, #t206) in #t206;
+    core::num* v4 = let final core::String* #t208 = "x" in let final core::double* #t209 = this.{self::Test7::[]}(#t208) in #t209.{core::num::==}(null) ?{core::num*} let final core::int* #t210 = self::getInt() in let final void #t211 = this.{self::Test7::[]=}(#t208, #t210) in #t210 : #t209;
+    core::num* v5 = let final core::String* #t212 = "x" in let final core::double* #t213 = this.{self::Test7::[]}(#t212) in #t213.{core::num::==}(null) ?{core::num*} let final core::num* #t214 = self::getNum() as{TypeError} core::int* in let final void #t215 = this.{self::Test7::[]=}(#t212, #t214) in #t214 : #t213;
+    core::double* v7 = let final core::String* #t216 = "x" in let final core::double* #t217 = let final<BottomType> #t218 = invalid-expression "pkg/front_end/testcases/inference_new/infer_assign_to_index_this_upwards.dart:268:31: Error: A value of type 'double' can't be assigned to a variable of type 'int'.
+        /*@target=double::+*/ += getInt();
+                              ^" in this.{self::Test7::[]}(#t216).{core::double::+}(self::getInt()) as{TypeError} core::int* in let final void #t219 = this.{self::Test7::[]=}(#t216, #t217) in #t217;
+    core::double* v8 = let final core::String* #t220 = "x" in let final core::double* #t221 = let final<BottomType> #t222 = invalid-expression "pkg/front_end/testcases/inference_new/infer_assign_to_index_this_upwards.dart:272:31: Error: A value of type 'double' can't be assigned to a variable of type 'int'.
+        /*@target=double::+*/ += getNum();
+                              ^" in this.{self::Test7::[]}(#t220).{core::double::+}(self::getNum()) as{TypeError} core::int* in let final void #t223 = this.{self::Test7::[]=}(#t220, #t221) in #t221;
+    core::double* v10 = let final core::String* #t224 = "x" in let final core::double* #t225 = let final<BottomType> #t226 = invalid-expression "pkg/front_end/testcases/inference_new/infer_assign_to_index_this_upwards.dart:274:57: Error: A value of type 'double' can't be assigned to a variable of type 'int'.
+    var /*@ type=double* */ v10 = /*@target=double::+*/ ++this
+                                                        ^" in this.{self::Test7::[]}(#t224).{core::double::+}(1) as{TypeError} core::int* in let final void #t227 = this.{self::Test7::[]=}(#t224, #t225) in #t225;
+    core::double* v11 = let final core::String* #t228 = "x" in let final core::double* #t229 = this.{self::Test7::[]}(#t228) in let final void #t230 = this.{self::Test7::[]=}(#t228, let final<BottomType> #t231 = invalid-expression "pkg/front_end/testcases/inference_new/infer_assign_to_index_this_upwards.dart:279:31: Error: A value of type 'double' can't be assigned to a variable of type 'int'.
+        /*@target=double::+*/ ++;
+                              ^" in #t229.{core::double::+}(1) as{TypeError} core::int*) in #t229;
+  }
+}
+abstract class Test8 extends core::Object {
+  synthetic constructor •() → self::Test8*
+    : super core::Object::•()
+    ;
+  abstract operator [](core::String* s) → core::double*;
+  abstract operator []=(core::String* s, core::num* v) → void;
+  method test() → void {
+    core::int* v1 = let final self::Test8* #t232 = this in let final core::String* #t233 = "x" in let final core::int* #t234 = self::getInt() in let final void #t235 = #t232.{self::Test8::[]=}(#t233, #t234) in #t234;
+    core::num* v2 = let final self::Test8* #t236 = this in let final core::String* #t237 = "x" in let final core::num* #t238 = self::getNum() in let final void #t239 = #t236.{self::Test8::[]=}(#t237, #t238) in #t238;
+    core::double* v3 = let final self::Test8* #t240 = this in let final core::String* #t241 = "x" in let final core::double* #t242 = self::getDouble() in let final void #t243 = #t240.{self::Test8::[]=}(#t241, #t242) in #t242;
+    core::num* v4 = let final core::String* #t244 = "x" in let final core::double* #t245 = this.{self::Test8::[]}(#t244) in #t245.{core::num::==}(null) ?{core::num*} let final core::int* #t246 = self::getInt() in let final void #t247 = this.{self::Test8::[]=}(#t244, #t246) in #t246 : #t245;
+    core::num* v5 = let final core::String* #t248 = "x" in let final core::double* #t249 = this.{self::Test8::[]}(#t248) in #t249.{core::num::==}(null) ?{core::num*} let final core::num* #t250 = self::getNum() in let final void #t251 = this.{self::Test8::[]=}(#t248, #t250) in #t250 : #t249;
+    core::double* v6 = let final core::String* #t252 = "x" in let final core::double* #t253 = this.{self::Test8::[]}(#t252) in #t253.{core::num::==}(null) ?{core::double*} let final core::double* #t254 = self::getDouble() in let final void #t255 = this.{self::Test8::[]=}(#t252, #t254) in #t254 : #t253;
+    core::double* v7 = let final core::String* #t256 = "x" in let final core::double* #t257 = this.{self::Test8::[]}(#t256).{core::double::+}(self::getInt()) in let final void #t258 = this.{self::Test8::[]=}(#t256, #t257) in #t257;
+    core::double* v8 = let final core::String* #t259 = "x" in let final core::double* #t260 = this.{self::Test8::[]}(#t259).{core::double::+}(self::getNum()) in let final void #t261 = this.{self::Test8::[]=}(#t259, #t260) in #t260;
+    core::double* v9 = let final core::String* #t262 = "x" in let final core::double* #t263 = this.{self::Test8::[]}(#t262).{core::double::+}(self::getDouble()) in let final void #t264 = this.{self::Test8::[]=}(#t262, #t263) in #t263;
+    core::double* v10 = let final core::String* #t265 = "x" in let final core::double* #t266 = this.{self::Test8::[]}(#t265).{core::double::+}(1) in let final void #t267 = this.{self::Test8::[]=}(#t265, #t266) in #t266;
+    core::double* v11 = let final core::String* #t268 = "x" in let final core::double* #t269 = this.{self::Test8::[]}(#t268) in let final void #t270 = this.{self::Test8::[]=}(#t268, #t269.{core::double::+}(1)) in #t269;
+  }
+}
+abstract class Test9 extends core::Object {
+  synthetic constructor •() → self::Test9*
+    : super core::Object::•()
+    ;
+  abstract operator [](core::String* s) → core::double*;
+  abstract operator []=(core::String* s, core::double* v) → void;
+  method test() → void {
+    core::num* v2 = let final self::Test9* #t271 = this in let final core::String* #t272 = "x" in let final core::num* #t273 = self::getNum() as{TypeError} core::double* in let final void #t274 = #t271.{self::Test9::[]=}(#t272, #t273) in #t273;
+    core::double* v3 = let final self::Test9* #t275 = this in let final core::String* #t276 = "x" in let final core::double* #t277 = self::getDouble() in let final void #t278 = #t275.{self::Test9::[]=}(#t276, #t277) in #t277;
+    core::num* v5 = let final core::String* #t279 = "x" in let final core::double* #t280 = this.{self::Test9::[]}(#t279) in #t280.{core::num::==}(null) ?{core::num*} let final core::num* #t281 = self::getNum() as{TypeError} core::double* in let final void #t282 = this.{self::Test9::[]=}(#t279, #t281) in #t281 : #t280;
+    core::double* v6 = let final core::String* #t283 = "x" in let final core::double* #t284 = this.{self::Test9::[]}(#t283) in #t284.{core::num::==}(null) ?{core::double*} let final core::double* #t285 = self::getDouble() in let final void #t286 = this.{self::Test9::[]=}(#t283, #t285) in #t285 : #t284;
+    core::double* v7 = let final core::String* #t287 = "x" in let final core::double* #t288 = this.{self::Test9::[]}(#t287).{core::double::+}(self::getInt()) in let final void #t289 = this.{self::Test9::[]=}(#t287, #t288) in #t288;
+    core::double* v8 = let final core::String* #t290 = "x" in let final core::double* #t291 = this.{self::Test9::[]}(#t290).{core::double::+}(self::getNum()) in let final void #t292 = this.{self::Test9::[]=}(#t290, #t291) in #t291;
+    core::double* v9 = let final core::String* #t293 = "x" in let final core::double* #t294 = this.{self::Test9::[]}(#t293).{core::double::+}(self::getDouble()) in let final void #t295 = this.{self::Test9::[]=}(#t293, #t294) in #t294;
+    core::double* v10 = let final core::String* #t296 = "x" in let final core::double* #t297 = this.{self::Test9::[]}(#t296).{core::double::+}(1) in let final void #t298 = this.{self::Test9::[]=}(#t296, #t297) in #t297;
+    core::double* v11 = let final core::String* #t299 = "x" in let final core::double* #t300 = this.{self::Test9::[]}(#t299) in let final void #t301 = this.{self::Test9::[]=}(#t299, #t300.{core::double::+}(1)) in #t300;
+  }
+}
+static method getInt() → core::int*
+  return 0;
+static method getNum() → core::num*
+  return 0;
+static method getDouble() → core::double*
+  return 0.0;
+static method main() → dynamic {}

@@ -1,0 +1,32 @@
+CREATE TABLE no_ids (
+    payload BLOB NOT NULL
+) WITHOUT ROWID;
+
+CREATE TABLE with_defaults (
+    a TEXT DEFAULT 'something',
+    b INT UNIQUE
+);
+
+CREATE TABLE with_constraints (
+    a TEXT,
+    b INT NOT NULL,
+    c FLOAT(10, 2),
+
+    FOREIGN KEY (a, b) REFERENCES with_defaults (a, b)
+);
+
+create table config (
+    config_key TEXT not null primary key,
+    config_value TEXT
+) AS "Config";
+
+CREATE TABLE mytable (
+    someid INTEGER NOT NULL PRIMARY KEY,
+    sometext TEXT,
+    somebool BOOLEAN,
+    somedate DATETIME
+);
+
+readConfig: SELECT * FROM config WHERE config_key = ?;
+readMultiple: SELECT * FROM config WHERE config_key IN ? ORDER BY $clause;
+readDynamic: SELECT * FROM config WHERE $predicate;

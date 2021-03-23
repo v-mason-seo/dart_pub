@@ -1,0 +1,21 @@
+language: dart
+dart:
+  - dev
+cache:
+  directories:
+    - $HOME/.pub-cache
+
+dist: trusty
+addons:
+  chrome: stable
+
+branches:
+  only: [master]
+
+# TODO: Give up the dream of running with dartdevc until...
+# https://github.com/dart-lang/sdk/issues/31280
+
+dart_task:
+  - test: --platform vm
+  - dartanalyzer
+  - dartfmt

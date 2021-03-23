@@ -1,0 +1,6 @@
+targets:
+  $default:
+    builders:
+      moor_generator:
+        options:
+          override_hash_and_equals_in_result_sets: true

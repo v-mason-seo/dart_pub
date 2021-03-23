@@ -1,0 +1,11 @@
+tests/packages
+*pubspec.lock
+.children
+.project
+packages/
+packages
+.packages
+*.iml
+.idea/
+out/
+.dart_tool

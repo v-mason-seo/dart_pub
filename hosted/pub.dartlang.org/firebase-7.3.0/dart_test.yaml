@@ -1,0 +1,4 @@
+# This is a browser and VM package.
+# Default to running in VM and Chrome
+# NOTE: It's good to verify JS targets work by using
+platforms: [vm, chrome]

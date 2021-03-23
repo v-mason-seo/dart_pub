@@ -1,0 +1,23 @@
+language: dart
+
+dart:
+  - dev
+  - stable
+
+dart_task:
+  - test
+  - test -p chrome,firefox
+  - dartfmt
+  - dartanalyzer: --fatal-infos --fatal-warnings .
+
+matrix:
+  exclude:
+    - dart: stable
+      dart_task: dartfmt
+
+branches:
+  only: [master]
+
+cache:
+  directories:
+    - $HOME/.pub-cache

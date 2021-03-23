@@ -1,0 +1,34 @@
+name: devtools
+description: A suite of web-based performance tooling for Dart and Flutter.
+
+# Note: this version should only be updated by running tools/update_version.sh
+# that updates all versions of packages from packages/devtools.
+#
+# All the real functionality has moved to the devtools_app package with this
+# package remaining purely as a container for the compiled copy of the devtools
+# app. That ensures that version constraints for the devtools_app do not impact
+# this package.
+version: 0.8.0+3
+
+homepage: https://github.com/flutter/devtools
+
+environment:
+  sdk: '>=2.3.0 <3.0.0'
+
+dependencies:
+  devtools_server: 0.8.0+3
+  devtools_shared: 0.8.0+3
+  http: ^0.12.0+1
+  intl: ^0.16.0
+
+dependency_overrides:
+
+# All overriden dependencies are published together so there is no harm
+# in treating them like they are part of a mono-repo while developing.
+
+
+
+
+
+executables:
+  devtools:

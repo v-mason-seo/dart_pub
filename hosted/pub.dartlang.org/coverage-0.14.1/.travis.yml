@@ -1,0 +1,29 @@
+language: dart
+
+dart:
+  # TODO(#308): re-enable testing against stable after 2.10 release.
+  # - 2.10.0
+  - dev
+
+dart_task:
+  - test
+  - dartanalyzer: --fatal-infos --fatal-warnings .
+  - dartfmt
+
+matrix:
+  include:
+  - dart: dev
+    script: ./tool/travis.sh
+    name: Collect and report coverage
+
+after_success:
+  - gem install coveralls-lcov
+  - coveralls-lcov var/lcov.info
+
+# Only building master means that we don't run two builds for each pull request.
+branches:
+  only: [master]
+
+cache:
+  directories:
+  - $HOME/.pub-cache

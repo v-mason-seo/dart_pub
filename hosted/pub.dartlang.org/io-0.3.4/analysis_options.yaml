@@ -1,0 +1,33 @@
+include: package:pedantic/analysis_options.yaml
+analyzer:
+  strong-mode:
+    implicit-casts: false
+    implicit-dynamic: false
+
+linter:
+  rules:
+    # Error Rules
+    - comment_references
+    - control_flow_in_finally
+    - empty_statements
+    - hash_and_equals
+    - invariant_booleans
+    - iterable_contains_unrelated_type
+    - list_remove_unrelated_type
+    - no_adjacent_strings_in_list
+    - test_types_in_equals
+    - throw_in_finally
+
+    # Style Rules
+    - camel_case_types
+    - cascade_invocations
+    - constant_identifier_names
+    - directives_ordering
+    - implementation_imports
+    - non_constant_identifier_names
+    - only_throw_errors
+    - prefer_const_constructors
+    - prefer_final_locals
+    - prefer_initializing_formals
+    - prefer_interpolation_to_compose_strings
+    - unnecessary_brace_in_string_interps

@@ -1,0 +1,26 @@
+language: dart
+
+dart:
+  - 2.1.0
+  - dev
+
+dart_task:
+  - test: --platform vm
+  - test: --platform firefox -j 1
+
+matrix:
+  include:
+    - dart: dev
+      dartanalyzer: --fatal-infos --fatal-warnings .
+    - dart: 2.1.0
+      dartanalyzer: --fatal-warnings .
+    - dart: dev
+      dart_task: dartfmt
+
+# Only building master means that we don't run two builds for each pull request.
+branches:
+  only: [master]
+
+cache:
+  directories:
+    - $HOME/.pub-cache

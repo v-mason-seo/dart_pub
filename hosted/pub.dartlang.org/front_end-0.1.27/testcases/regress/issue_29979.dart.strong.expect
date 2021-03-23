@@ -1,0 +1,14 @@
+library;
+//
+// Problems in library:
+//
+// pkg/front_end/testcases/regress/issue_29979.dart:6:4: Error: A function expression can't have a name.
+//   (f() {})();
+//    ^
+//
+import self as self;
+import "dart:core" as core;
+
+static method main() → dynamic {
+  (let final () →* core::Null? f = () → core::Null? {} in f).call();
+}
