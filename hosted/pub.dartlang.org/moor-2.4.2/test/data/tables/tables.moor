@@ -1,0 +1,68 @@
+import 'converter.dart';
+
+CREATE TABLE no_ids (
+    payload BLOB NOT NULL PRIMARY KEY
+) WITHOUT ROWID;
+
+CREATE TABLE with_defaults (
+    a TEXT DEFAULT 'something',
+    b INT UNIQUE
+);
+
+CREATE TABLE with_constraints (
+    a TEXT,
+    b INT NOT NULL,
+    c FLOAT(10, 2),
+
+    FOREIGN KEY (a, b) REFERENCES with_defaults (a, b)
+);
+
+create table config (
+    config_key TEXT not null primary key,
+    config_value TEXT,
+    sync_state INTEGER MAPPED BY `const SyncTypeConverter()`
+) AS "Config";
+
+CREATE INDEX IF NOT EXISTS value_idx ON config (config_value);
+
+CREATE TABLE mytable (
+    someid INTEGER NOT NULL PRIMARY KEY,
+    sometext TEXT,
+    somebool BOOLEAN,
+    somedate DATETIME
+);
+
+CREATE VIRTUAL TABLE email USING fts5(sender, title, body) AS EMail;
+
+CREATE TRIGGER my_trigger AFTER INSERT ON config BEGIN
+  INSERT INTO with_defaults VALUES (new.config_key, LENGTH(new.config_value));
+END;
+
+readConfig: SELECT * FROM config WHERE config_key = ?;
+readMultiple: SELECT * FROM config WHERE config_key IN ? ORDER BY $clause;
+readDynamic: SELECT * FROM config WHERE $predicate;
+
+tableValued:
+  SELECT "key", "value"
+  FROM config, json_each(config.config_value)
+  WHERE json_valid(config_value);
+
+@create: INSERT INTO config (config_key, config_value) VALUES ('key', 'values');
+
+multiple: SELECT * FROM with_constraints c
+ INNER JOIN with_defaults d
+   ON d.a = c.a AND d.b = c.b
+ WHERE $predicate;
+
+searchEmails: SELECT * FROM email WHERE email MATCH :term ORDER BY rank;
+
+readRowId: SELECT oid, * FROM config WHERE _rowid_ = $expr;
+
+cfeTest: WITH RECURSIVE
+  cnt(x) AS (
+    SELECT 1
+      UNION ALL
+      SELECT x+1 FROM cnt
+      LIMIT 1000000
+    )
+  SELECT x FROM cnt;

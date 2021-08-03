@@ -1,0 +1,17 @@
+# See https://github.com/dart-lang/mono_repo for details
+dart:
+  - dev
+
+stages:
+  - analyze:
+      - command: "dartanalyzer --fatal-infos ."
+      - command: "dartfmt --dry-run --set-exit-if-changed ."
+  - unit_test:
+      - command: "pub run test test/all_test.dart --platform vm"
+      - command: "pub run test test/all_test.dart --platform chrome"
+  - coverage:
+      - command: "pub global activate dart_coveralls && dart_coveralls report test/all_test.dart"
+
+cache:
+  directories:
+    - .dart_tool/build

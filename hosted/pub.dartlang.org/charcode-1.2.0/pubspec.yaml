@@ -1,0 +1,12 @@
+name: charcode
+version: 1.2.0
+repository: https://github.com/lrhn/charcode
+description: >-
+  Constants for ASCII and common non-ASCII character codes.
+
+environment:
+  sdk: ">=2.12.0-0 <3.0.0"
+
+dev_dependencies:
+  test: ^1.16.0-nullsafety
+  pedantic: ^1.10.0-nullsafety

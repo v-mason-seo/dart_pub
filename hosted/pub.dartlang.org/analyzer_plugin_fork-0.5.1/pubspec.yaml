@@ -1,0 +1,13 @@
+name: analyzer_plugin_fork
+description: A framework and support code for building plugins for the analysis server.
+version: 0.5.1
+homepage: https://github.com/dart-lang/sdk/tree/master/pkg/analyzer_plugin
+
+environment:
+  sdk: '>=2.9.0 <3.0.0'
+
+dependencies:
+  analyzer: '^1.0.0'
+  dart_style: '^2.0.0'
+  meta: ^1.2.3
+  pub_semver: ^2.0.0

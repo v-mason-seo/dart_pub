@@ -1,0 +1,20 @@
+pubspec.lock
+.DS_Store
+.atom/
+.dart_tool/
+.idea
+.vscode/
+.packages
+.pub/
+build/
+ios/.generated/
+packages
+.flutter-plugins
+doc/api/
+coverage/
+.project
+
+# golden failure diffs
+test/failures
+# Flutter crash logs
+/flutter_*.log

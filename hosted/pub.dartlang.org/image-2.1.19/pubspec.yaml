@@ -1,0 +1,17 @@
+name: image
+version: 2.1.19
+description: Provides server and web apps the ability to load, manipulate, and save images with various image file formats including PNG, JPEG, GIF, BMP, WebP, TIFF, TGA, PSD, PVR, and OpenEXR.
+homepage: https://github.com/brendan-duncan/image
+documentation: https://github.com/brendan-duncan/image/wiki
+environment:
+  sdk: '>=2.0.0 <3.0.0'
+dependencies:
+  archive: '>=2.0.0 <3.0.0'
+  xml: '>=4.2.0 <5.0.0'
+  meta: '>=1.1.8 <2.0.0'
+dev_dependencies:
+  test: '>=1.0.0 <2.0.0'
+  pedantic: '>=1.0.0 <2.0.0'
+  build_web_compilers: '>=2.0.0 <3.0.0'
+  build_runner: '>=1.0.0 <2.0.0'
+  build_test: '>=1.0.0 <2.0.0'
